@@ -68,3 +68,14 @@ rankTest('should return 7 when calculate voyageRisk given 4 < voyage length < 8 
   //then
   t.is(7, result)
 });
+rankTest('should return 5 when calculate voyageRisk given voyage length = 10 and voyage zone not in specific zones', t => {
+  //given
+  const voyage = {
+    zone: 'west-indies',
+    length: 10,
+  };
+  //when
+  const result = voyageRisk(voyage);
+  //then
+  t.is(5, result)
+});

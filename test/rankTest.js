@@ -319,3 +319,58 @@ rankTest('should return 6 when calculate voyageProfitFactor given voyage zone is
   //then
   t.is(6, result)
 });
+rankTest('should return 7 when calculate voyageProfitFactor given voyage zone is china and history length = 11 and history has china and voyage length 7', t => {
+  //given
+  const voyage = {
+    zone: 'china',
+    length: 7,
+  };
+  const history = [
+    {
+      zone: 'china',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'west-africa',
+      profit: 2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'west-africa',
+      profit: 2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+  ];
+  //when
+  const result = voyageProfitFactor(voyage,history);
+  //then
+  t.is(7, result)
+});

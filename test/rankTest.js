@@ -1,6 +1,6 @@
 const rankTest = require('ava');
 const { rating ,voyageRisk,captainHistoryRisk,voyageProfitFactor,} = require('../src/rank');
-rankTest('', t => {
+rankTest('should return B when rating given (vpf * 3 < (vr + chr * 2))', t => {
   const voyage = {
     zone: 'west-indies',
     length: 10,
@@ -23,6 +23,50 @@ rankTest('', t => {
   ];
   const myRating = rating(voyage, history);
   t.is('B', myRating)
+});
+rankTest('should return A when rating given (vpf * 3 > (vr + chr * 2)', t => {
+  const voyage = {
+    zone: 'china',
+    length: 2,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'east-indies',
+      profit: 5,
+    }, {
+      zone: 'west-indies',
+      profit: 15,
+    }, {
+      zone: 'china',
+      profit: -2,
+    },
+  ];
+  const myRating = rating(voyage, history);
+  t.is('A', myRating)
 });
 rankTest('should return 1 when calculate voyageRisk given voyage length < 4 and voyage zone not in specific zones', t => {
   //given
@@ -865,5 +909,6 @@ rankTest('should return 2 when calculate voyageProfitFactor given voyage zone is
   //then
   t.is(2, result)
 });
+
 
 

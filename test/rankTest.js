@@ -1,5 +1,6 @@
 const rankTest = require('ava');
-const { rating ,voyageRisk,captainHistoryRisk,voyageProfitFactor,} = require('../src/rank');
+const { rating ,} = require('../src/rank');
+const {voyageRisk,captainHistoryRisk,voyageProfitFactor,}= require('../src/createRankData');
 rankTest('should return B when rating given (vpf * 3 < (vr + chr * 2))', t => {
   const voyage = {
     zone: 'west-indies',

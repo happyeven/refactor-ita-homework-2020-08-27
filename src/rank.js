@@ -35,15 +35,20 @@ function hasChina(history) {
 }
 
 function captainHistoryRisk(voyage, history) {
-  let result = 1;
-  if (history.length < 5) {
-    result += 4;
-  }
+  let result = calculateRiskWithHistoryLength(history);
   result += history.filter(v => v.profit < 0).length;
   if (voyage.zone === 'china' && hasChina(history)) {
     result -= 2;
   }
   return Math.max(result, 0);
+}
+
+function calculateRiskWithHistoryLength(history) {
+  let result = 1;
+  if (history.length < 5) {
+    result += 4;
+  }
+  return result;
 }
 
 function voyageProfitFactor(voyage, history) {

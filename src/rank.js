@@ -1,11 +1,11 @@
 function voyageRisk(voyage) {
-  let result = calculateVoyageRisk(voyage);
-  return Math.max(result, 0);
+  let result = Math.max(calculateVoyageRisk(voyage), 0);
+  return result;
 }
 
 function calculateVoyageRisk(voyage) {
   let result = calculateRiskWithVoyageLength(voyage);
-  result = calculateRiskWithVoyageZone(voyage, result);
+  result += calculateRiskWithVoyageZone(voyage, result);
   return result;
 }
 
@@ -14,9 +14,9 @@ function calculateRiskWithVoyageZone(voyage, result) {
     'china',
     'east-indies',
   ].includes(voyage.zone)) {
-    result += 4;
+    return 4;
   }
-  return result;
+  return 0;
 }
 
 function calculateRiskWithVoyageLength(voyage) {
@@ -35,8 +35,8 @@ function hasChina(history) {
 }
 
 function captainHistoryRisk(voyage, history) {
-  let result = calculateRiskWithCaptainHistory(history, voyage);
-  return Math.max(result, 0);
+  let result = Math.max(calculateRiskWithCaptainHistory(history, voyage), 0);
+  return result;
 }
 
 function calculateRiskWithCaptainHistory(history, voyage) {

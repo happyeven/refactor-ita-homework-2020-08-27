@@ -1,11 +1,11 @@
 class Employee {
-  constructor (name, type) {
+  constructor(name, type) {
     this.validateType(type);
     this._name = name;
     this._type = type;
   }
 
-  validateType (type) {
+  validateType(type) {
     if (![
       'engineer',
       'manager',
@@ -15,9 +15,19 @@ class Employee {
     }
   }
 
-  toString () {
+  toString() {
     return `${this._name} (${this._type})`;
   }
 }
 
-module.exports = {  Employee };
+class Engineer extends Employee {
+  get type() { return "engineer"; }
+}
+class Manager extends Employee {
+  get type() { return "manager"; }
+}
+class Salesman extends Employee {
+  get type() { return "salesman"; }
+}
+
+module.exports = { Employee };

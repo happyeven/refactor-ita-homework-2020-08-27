@@ -65,7 +65,7 @@ function calculateRiskWithHistoryLength(history) {
   return result;
 }
 
-function voyageProfitFactor(voyage, history) {
+function voyageProfitFactor2(voyage, history) {
   let result = 2;
   if (voyage.zone === 'china') {
     result += 1;
@@ -92,6 +92,44 @@ function voyageProfitFactor(voyage, history) {
     if (voyage.length > 14) {
       result -= 1;
     }
+  }
+  return result;
+}
+
+function voyageProfitFactor(voyage, history) {
+  let result = 2;
+  if (voyage.zone === 'china') {
+    result += 1;
+    if (hasChina(history)) {
+      result += 3;
+      if (history.length > 10) {
+        result += 1;
+      }
+      if (voyage.length > 12) {
+        result += 1;
+      }
+      if (voyage.length > 18) {
+        result -= 1;
+      } 
+    }else {
+      result = calculeteProfitWithNotChinaOrNotHasChainHistory(history, result, voyage);
+    }
+  } else if (voyage.zone === 'east-indies') {
+    result += 1;
+    result = calculeteProfitWithNotChinaOrNotHasChainHistory(history, result, voyage);
+  }
+  else {
+    result = calculeteProfitWithNotChinaOrNotHasChainHistory(history, result, voyage);
+  }
+  return result;
+}
+
+function calculeteProfitWithNotChinaOrNotHasChainHistory(history, result, voyage) {
+  if (history.length > 8) {
+    result += 1;
+  }
+  if (voyage.length > 14) {
+    result -= 1;
   }
   return result;
 }

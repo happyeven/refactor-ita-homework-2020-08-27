@@ -39,3 +39,7 @@ function deliveryDate (anOrder, isRush) {
     return anOrder.placedOn.plusDays(2 + deliveryTime);
   }
 }
+
+module.exports = {
+  deliveryDate
+};

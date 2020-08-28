@@ -65,49 +65,11 @@ function calculateRiskWithHistoryLength(history) {
   return result;
 }
 
-function voyageProfitFactor2(voyage, history) {
-  let result = 2;
-  if (voyage.zone === 'china') {
-    result += 1;
-  }
-  if (voyage.zone === 'east-indies') {
-    result += 1;
-  }
-  if (voyage.zone === 'china' && hasChina(history)) {
-    result += 3;
-    if (history.length > 10) {
-      result += 1;
-    }
-    if (voyage.length > 12) {
-      result += 1;
-    }
-    if (voyage.length > 18) {
-      result -= 1;
-    }
-  }
-  else {
-    if (history.length > 8) {
-      result += 1;
-    }
-    if (voyage.length > 14) {
-      result -= 1;
-    }
-  }
-  return result;
-}
-
 function voyageProfitFactor(voyage, history) {
   let result = 2;
-  if (voyage.zone === 'china') {
-    if (hasChina(history)) {
-      result += calculateProfitWithBothChinaAndHistoryHasChina( history, voyage);
-    }else {
-      result += calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage);
-    }
-  } else if (voyage.zone === 'east-indies') {
-    result += calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage);
-  }
-  else {
+  if (voyage.zone === 'china' && hasChina(history)) {
+    result += calculateProfitWithBothChinaAndHistoryHasChina(history, voyage);
+  } else {
     result += calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage);
   }
   return result;
@@ -129,7 +91,7 @@ function calculateProfitWithBothChinaAndHistoryHasChina(history, voyage) {
 
 function calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage) {
   let result = 0
-  if(voyage.zone === 'china' || voyage.zone === 'east-indies'){
+  if (voyage.zone === 'china' || voyage.zone === 'east-indies') {
     result += 1
   }
   if (history.length > 8) {

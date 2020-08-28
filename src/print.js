@@ -1,6 +1,6 @@
 function printOwing(invoice) {
 
-  let printString = '***********************\n**** Customer Owes ****\n***********************\n';
+  let printString = generateTitle()
 
   // calculate outstanding
   let outstanding = calculateOutstanding(invoice);
@@ -16,6 +16,12 @@ function printOwing(invoice) {
 module.exports = {
   printOwing
 };
+
+function generateTitle() {
+  return '***********************\n' +
+    '**** Customer Owes ****\n' +
+    '***********************\n'
+}
 function appendDetails(invoice, outstanding) {
   return `name: ${invoice.customer}\namount: ${outstanding}\namount: ${invoice.dueDate.toLocaleDateString()}`
 }

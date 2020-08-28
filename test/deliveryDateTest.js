@@ -26,3 +26,29 @@ deliveryDateTest('should return 3 when deliveryDate given isRush true and delive
     const result = deliveryDate(anOrder,isRush);
     t.is(3, result)
 });
+deliveryDateTest('should return 4 when deliveryDate given isRush true and deliveryState AA', t => {
+    let isRush = true
+    let anOrder = {
+        deliveryState: 'AA',
+        placedOn: {
+            plusDays: function (data) {
+                return data;
+            }
+        }
+    }
+    const result = deliveryDate(anOrder,isRush);
+    t.is(4, result)
+});
+deliveryDateTest('should return 6 when deliveryDate given isRush false and deliveryState AA', t => {
+    let isRush = false
+    let anOrder = {
+        deliveryState: 'AA',
+        placedOn: {
+            plusDays: function (data) {
+                return data;
+            }
+        }
+    }
+    const result = deliveryDate(anOrder,isRush);
+    t.is(6, result)
+});

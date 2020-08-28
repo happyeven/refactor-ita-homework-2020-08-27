@@ -37,4 +37,4 @@ function createEmployee(name, type) {
     default: throw new Error(`Employee cannot be of type ${type}`);
   }
 }
-module.exports = { Employee };
+module.exports = { Employee ,createEmployee};

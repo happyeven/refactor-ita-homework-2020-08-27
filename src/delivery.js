@@ -1,10 +1,8 @@
-function deliveryDate (anOrder, isRush) {
+function deliveryDate(anOrder, isRush) {
   if (isRush) {
     return calculateDateIsRushTrue(anOrder);
   }
-  else {
-    return calculateDateIdRushFalse(anOrder);
-  }
+  return calculateDateIdRushFalse(anOrder);
 }
 
 module.exports = {
@@ -28,7 +26,7 @@ function calculateDateIdRushFalse(anOrder) {
   else {
     deliveryTime = 4;
   }
-  return anOrder.placedOn.plusDays(2 + deliveryTime);
+  return calculateDatePlusDays(2, deliveryTime, anOrder);
 }
 
 function calculateDateIsRushTrue(anOrder) {
@@ -48,6 +46,9 @@ function calculateDateIsRushTrue(anOrder) {
   else {
     deliveryTime = 3;
   }
-  return anOrder.placedOn.plusDays(1 + deliveryTime);
+  return calculateDatePlusDays(1, deliveryTime, anOrder);
+}
+function calculateDatePlusDays(plusDays, deliveryTime, anOrder) {
+  return anOrder.placedOn.plusDays(plusDays + deliveryTime);
 }
 

@@ -1,19 +1,16 @@
 function printOwing(invoice) {
-
-  let printString = generateTitle()
   invoice = addDataToInvoice(invoice)
-  printString += appendDetails(invoice);
-  return printString
+  return generateResult(invoice)
 }
 module.exports = {
   printOwing
 };
-function addDataToInvoice(invoice){
+function addDataToInvoice(invoice) {
   invoice.outstanding = calculateOutstanding(invoice);
   invoice.dueDate = generateDueData()
   return invoice
 }
-function generateDueData(){
+function generateDueData() {
   const today = new Date();
   return new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
 }
@@ -22,8 +19,10 @@ function generateTitle() {
     '**** Customer Owes ****\n' +
     '***********************\n'
 }
-function appendDetails(invoice) {
-  return `name: ${invoice.customer}\namount: ${invoice.outstanding}\namount: ${invoice.dueDate.toLocaleDateString()}`
+function generateResult(invoice) {
+  let printString = generateTitle()
+  printString += `name: ${invoice.customer}\namount: ${invoice.outstanding}\namount: ${invoice.dueDate.toLocaleDateString()}`
+  return printString
 }
 
 function calculateOutstanding(invoice) {

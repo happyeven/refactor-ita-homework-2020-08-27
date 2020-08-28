@@ -35,10 +35,15 @@ function hasChina(history) {
 }
 
 function captainHistoryRisk(voyage, history) {
+  let result = calculateRiskWithCaptainHistory(history, voyage);
+  return Math.max(result, 0);
+}
+
+function calculateRiskWithCaptainHistory(history, voyage) {
   let result = calculateRiskWithHistoryLength(history);
   result += calculateRiskWithHistoryProfit(history);
   result += calculateRiskWithSpecificZoneAndHistory(voyage, history);
-  return Math.max(result, 0);
+  return result;
 }
 
 function calculateRiskWithSpecificZoneAndHistory(voyage, history, result) {

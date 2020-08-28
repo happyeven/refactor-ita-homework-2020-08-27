@@ -66,17 +66,14 @@ function calculateRiskWithHistoryLength(history) {
 }
 
 function voyageProfitFactor(voyage, history) {
-  let result = 2;
   if (voyage.zone === 'china' && hasChina(history)) {
-    result += calculateProfitWithBothChinaAndHistoryHasChina(history, voyage);
-  } else {
-    result += calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage);
+    return calculateProfitWithBothChinaAndHistoryHasChina(history, voyage);
   }
-  return result;
+  return calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage);
 }
 
 function calculateProfitWithBothChinaAndHistoryHasChina(history, voyage) {
-  let result = 4;
+  let result = 6;
   if (history.length > 10) {
     result += 1;
   }
@@ -90,7 +87,7 @@ function calculateProfitWithBothChinaAndHistoryHasChina(history, voyage) {
 }
 
 function calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage) {
-  let result = 0
+  let result = 2
   if (voyage.zone === 'china' || voyage.zone === 'east-indies') {
     result += 1
   }

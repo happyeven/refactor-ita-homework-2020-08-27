@@ -9,18 +9,19 @@ module.exports = {
   deliveryDate
 };
 function calculateDateIdRushFalse(anOrder) {
+  let state = anOrder.deliveryState
   let deliveryTime;
-  if ([
+  if (isStatesIncludeState([
     'MA',
     'CT',
     'NY',
-  ].includes(anOrder.deliveryState)) {
+  ], state)) {
     deliveryTime = 2;
   }
-  else if ([
+  else if (isStatesIncludeState([
     'ME',
     'NH',
-  ].includes(anOrder.deliveryState)) {
+  ], state)) {
     deliveryTime = 3;
   }
   else {
@@ -30,17 +31,18 @@ function calculateDateIdRushFalse(anOrder) {
 }
 
 function calculateDateIsRushTrue(anOrder) {
+  let state = anOrder.deliveryState
   let deliveryTime;
-  if ([
+  if (isStatesIncludeState([
     'MA',
     'CT',
-  ].includes(anOrder.deliveryState)) {
+  ], state)) {
     deliveryTime = 1;
   }
-  else if ([
+  else if (isStatesIncludeState([
     'NY',
     'NH',
-  ].includes(anOrder.deliveryState)) {
+  ], state)) {
     deliveryTime = 2;
   }
   else {
@@ -50,5 +52,8 @@ function calculateDateIsRushTrue(anOrder) {
 }
 function calculateDatePlusDays(plusDays, deliveryTime, anOrder) {
   return anOrder.placedOn.plusDays(plusDays + deliveryTime);
+}
+function isStatesIncludeState(states, state) {
+  return states.includes(state)
 }
 

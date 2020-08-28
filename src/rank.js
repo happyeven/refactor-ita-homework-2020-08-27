@@ -1,8 +1,12 @@
 function voyageRisk(voyage) {
-  let result = 1;
-  result += calculateRiskWithVoyageLength(voyage);
-  result = calculateRiskWithVoyageZone(voyage, result);
+  let result = calculateVoyageRisk(voyage);
   return Math.max(result, 0);
+}
+
+function calculateVoyageRisk(voyage) {
+  let result = calculateRiskWithVoyageLength(voyage);
+  result = calculateRiskWithVoyageZone(voyage, result);
+  return result;
 }
 
 function calculateRiskWithVoyageZone(voyage, result) {
@@ -16,7 +20,7 @@ function calculateRiskWithVoyageZone(voyage, result) {
 }
 
 function calculateRiskWithVoyageLength(voyage) {
-  let result = 0
+  let result = 1
   if (voyage.length > 4) {
     result += 2;
   }

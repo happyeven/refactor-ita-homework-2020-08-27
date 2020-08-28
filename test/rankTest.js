@@ -1,6 +1,6 @@
 const rankTest = require('ava');
-const { rating ,} = require('../src/rank');
-const {voyageRisk,captainHistoryRisk,voyageProfitFactor,}= require('../src/createRankData');
+const { rating, } = require('../src/rank');
+const { voyageRisk, captainHistoryRisk, voyageProfitFactor, } = require('../src/createRankData');
 rankTest('should return B when rating given (vpf * 3 < (vr + chr * 2))', t => {
   const voyage = {
     zone: 'west-indies',
@@ -75,7 +75,7 @@ rankTest('should return 1 when calculate voyageRisk given voyage length < 4 and 
     zone: 'west-indies',
     length: 1,
   };
- //when
+  //when
   const result = voyageRisk(voyage);
   //then
   t.is(1, result)
@@ -86,7 +86,7 @@ rankTest('should return 5 when calculate voyageRisk given voyage length < 4 and 
     zone: 'china',
     length: 1,
   };
- //when
+  //when
   const result = voyageRisk(voyage);
   //then
   t.is(5, result)
@@ -158,7 +158,7 @@ rankTest('should return 7 when calculate captainHistoryRisk given voyage zone is
     },
   ];
   //when
-  const result = captainHistoryRisk(voyage,history);
+  const result = captainHistoryRisk(voyage, history);
   //then
   t.is(7, result)
 });
@@ -185,7 +185,7 @@ rankTest('should return 5 when calculate captainHistoryRisk given voyage zone is
     },
   ];
   //when
-  const result = captainHistoryRisk(voyage,history);
+  const result = captainHistoryRisk(voyage, history);
   //then
   t.is(5, result)
 });
@@ -220,7 +220,7 @@ rankTest('should return 2 when calculate captainHistoryRisk given voyage zone is
     },
   ];
   //when
-  const result = captainHistoryRisk(voyage,history);
+  const result = captainHistoryRisk(voyage, history);
   //then
   t.is(2, result)
 });
@@ -255,7 +255,7 @@ rankTest('should return 2 when calculate captainHistoryRisk given voyage zone is
     },
   ];
   //when
-  const result = captainHistoryRisk(voyage,history);
+  const result = captainHistoryRisk(voyage, history);
   //then
   t.is(2, result)
 });
@@ -290,7 +290,7 @@ rankTest('should return 0 when calculate captainHistoryRisk given voyage zone is
     },
   ];
   //when
-  const result = captainHistoryRisk(voyage,history);
+  const result = captainHistoryRisk(voyage, history);
   //then
   t.is(0, result)
 });
@@ -325,7 +325,7 @@ rankTest('should return 0 when calculate captainHistoryRisk given voyage zone is
     },
   ];
   //when
-  const result = captainHistoryRisk(voyage,history);
+  const result = captainHistoryRisk(voyage, history);
   //then
   t.is(0, result)
 });
@@ -360,7 +360,7 @@ rankTest('should return 6 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(6, result)
 });
@@ -415,7 +415,7 @@ rankTest('should return 7 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(7, result)
 });
@@ -470,7 +470,7 @@ rankTest('should return 8 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(8, result)
 });
@@ -525,7 +525,7 @@ rankTest('should return 7 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(7, result)
 });
@@ -564,7 +564,7 @@ rankTest('should return 3 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(3, result)
 });
@@ -611,7 +611,7 @@ rankTest('should return 4 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(4, result)
 });
@@ -650,7 +650,7 @@ rankTest('should return 2 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(2, result)
 });
@@ -693,7 +693,7 @@ rankTest('should return 2 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(2, result)
 });
@@ -740,7 +740,7 @@ rankTest('should return 3 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(3, result)
 });
@@ -779,7 +779,7 @@ rankTest('should return 1 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(1, result)
 });
@@ -820,7 +820,7 @@ rankTest('should return 3 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(3, result)
 });
@@ -867,7 +867,7 @@ rankTest('should return 4 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(4, result)
 });
@@ -906,7 +906,7 @@ rankTest('should return 2 when calculate voyageProfitFactor given voyage zone is
     },
   ];
   //when
-  const result = voyageProfitFactor(voyage,history);
+  const result = voyageProfitFactor(voyage, history);
   //then
   t.is(2, result)
 });

@@ -1,5 +1,5 @@
-const {createRankData}= require('../src/createRankData');
-function judgeRate(data){
+const { createRankData } = require('../src/createRankData');
+function judgeRate(data) {
   const vpf = data.vpf;
   const vr = data.vr;
   const chr = data.chr;
@@ -10,7 +10,7 @@ function rating(voyage, history) {
   if (judgeRate(data)) {
     return 'A';
   }
-    return 'B';
+  return 'B';
 }
 
 module.exports = {

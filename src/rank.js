@@ -1,13 +1,18 @@
 function voyageRisk(voyage) {
   let result = 1;
   result += calculateRiskWithVoyageLength(voyage);
+  result = calculateRiskWithVoyageZone(voyage, result);
+  return Math.max(result, 0);
+}
+
+function calculateRiskWithVoyageZone(voyage, result) {
   if ([
     'china',
     'east-indies',
   ].includes(voyage.zone)) {
     result += 4;
   }
-  return Math.max(result, 0);
+  return result;
 }
 
 function calculateRiskWithVoyageLength(voyage) {

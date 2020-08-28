@@ -29,5 +29,12 @@ class Manager extends Employee {
 class Salesman extends Employee {
   get type() { return "salesman"; }
 }
-
+function createEmployee(name, type) {
+  switch (type) {
+    case "engineer": return new Engineer(name, type);
+    case "salesman": return new Salesman(name, type);
+    case "manager": return new Manager(name, type);
+    default: throw new Error(`Employee cannot be of type ${type}`);
+  }
+}
 module.exports = { Employee };

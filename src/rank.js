@@ -100,11 +100,14 @@ function calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage) {
   return result;
 }
 
-function rating(voyage, history) {
+function judgeRate(voyage, history){
   const vpf = voyageProfitFactor(voyage, history);
   const vr = voyageRisk(voyage);
   const chr = captainHistoryRisk(voyage, history);
-  if (vpf * 3 > (vr + chr * 2)) {
+  return vpf * 3 > (vr + chr * 2)
+}
+function rating(voyage, history) {
+  if (judgeRate(voyage, history)) {
     return 'A';
   }
   else {

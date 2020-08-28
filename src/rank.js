@@ -1,11 +1,6 @@
 function voyageRisk(voyage) {
   let result = 1;
-  if (voyage.length > 4) {
-    result += 2;
-  }
-  if (voyage.length > 8) {
-    result += voyage.length - 8;
-  }
+  result += calculateRiskWithVoyageLength(voyage);
   if ([
     'china',
     'east-indies',
@@ -13,6 +8,17 @@ function voyageRisk(voyage) {
     result += 4;
   }
   return Math.max(result, 0);
+}
+
+function calculateRiskWithVoyageLength(voyage) {
+  let result = 0
+  if (voyage.length > 4) {
+    result += 2;
+  }
+  if (voyage.length > 8) {
+    result += voyage.length - 8;
+  }
+  return result;
 }
 
 function hasChina(history) {

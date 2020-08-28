@@ -99,24 +99,22 @@ function voyageProfitFactor2(voyage, history) {
 function voyageProfitFactor(voyage, history) {
   let result = 2;
   if (voyage.zone === 'china') {
-    result += 1;
     if (hasChina(history)) {
-      result += calculateProfitWithBothChinaAndHistoryHasChain( history, voyage); 
+      result += calculateProfitWithBothChinaAndHistoryHasChina( history, voyage);
     }else {
-      result = calculateProfitWithNotChinaOrNotHasChainHistory(history, result, voyage);
+      result += calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage);
     }
   } else if (voyage.zone === 'east-indies') {
-    result += 1;
-    result = calculateProfitWithNotChinaOrNotHasChainHistory(history, result, voyage);
+    result += calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage);
   }
   else {
-    result = calculateProfitWithNotChinaOrNotHasChainHistory(history, result, voyage);
+    result += calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage);
   }
   return result;
 }
 
-function calculateProfitWithBothChinaAndHistoryHasChain(history, voyage) {
-  result = 3;
+function calculateProfitWithBothChinaAndHistoryHasChina(history, voyage) {
+  let result = 4;
   if (history.length > 10) {
     result += 1;
   }
@@ -129,7 +127,11 @@ function calculateProfitWithBothChinaAndHistoryHasChain(history, voyage) {
   return result;
 }
 
-function calculeteProfitWithNotChinaOrNotHasChainHistory(history, result, voyage) {
+function calculateProfitWithNotChinaOrNotHasChinaHistory(history, voyage) {
+  let result = 0
+  if(voyage.zone === 'china' || voyage.zone === 'east-indies'){
+    result += 1
+  }
   if (history.length > 8) {
     result += 1;
   }
